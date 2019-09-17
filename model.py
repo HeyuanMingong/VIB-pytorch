@@ -52,7 +52,8 @@ class ToyNet(nn.Module):
             mu = expand(mu)
             std = expand(std)
 
-        eps = Variable(cuda(std.data.new(std.size()).normal_(), std.is_cuda))
+        # eps = Variable(cuda(std.data.new(std.size()).normal_(), std.is_cuda))
+        eps = std.data.new(std.size()).normal_()
 
         return mu + eps * std
 
